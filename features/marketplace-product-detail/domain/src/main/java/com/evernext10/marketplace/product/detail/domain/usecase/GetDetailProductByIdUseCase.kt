@@ -1,6 +1,6 @@
 package com.evernext10.marketplace.product.detail.domain.usecase
 
-import com.evernext10.core.domain.model.product.response.MarketplaceProductDetailResponse
+import com.evernext10.core.domain.model.pokemon.response.MarketplaceProductDetailResponse
 import com.evernext10.core.domain.network.Either
 import com.evernext10.core.domain.network.Failure
 import com.evernext10.core.domain.network.UseCase
@@ -13,5 +13,5 @@ class GetDetailProductByIdUseCase constructor(
         return mercadoLibreRepository.productDetail(params.id)
     }
 
-    data class Params(val id: String?)
+    data class Params(val id: Int?)
 }

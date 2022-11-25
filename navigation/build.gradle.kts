@@ -40,6 +40,7 @@ dependencies {
 
     implementation(Koin.koinCore)
     implementation(Koin.koinAndroid)
+    implementation(project(Module.core))
 
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.5.1")

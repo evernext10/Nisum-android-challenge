@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.evernext10.core.domain.model.product.response.MarketplaceProductDetailResponse
-import com.evernext10.core.domain.model.product.state.StateProductDetail
+import com.evernext10.core.domain.model.pokemon.response.MarketplaceProductDetailResponse
+import com.evernext10.core.domain.model.pokemon.state.StateProductDetail
 import com.evernext10.core.domain.network.Failure
 import com.evernext10.marketplace.product.detail.domain.usecase.GetDetailProductByIdUseCase
 
@@ -19,17 +19,17 @@ class ProductDetailViewModel(
     private val _productDetailState: MutableLiveData<StateProductDetail> = MutableLiveData()
     val productDetailState: LiveData<StateProductDetail> = _productDetailState
 
-    fun getDataFromStateHandled(productId: String) {
+    fun getDataFromStateHandled(pockemonId: Int) {
         if (savedStateHandle.contains(KEY_STATE)) {
             _productDetailState.postValue(StateProductDetail.Success(savedStateHandle[KEY_STATE]!!))
         } else {
-            getMarketplaceProductDetail(productId)
+            getMarketplaceProductDetail(pockemonId)
         }
     }
 
-    private fun getMarketplaceProductDetail(productId: String) {
+    private fun getMarketplaceProductDetail(pockemonId: Int) {
         useCase(
-            GetDetailProductByIdUseCase.Params(productId),
+            GetDetailProductByIdUseCase.Params(pockemonId),
             viewModelScope
         ) {
             it.fold(
@@ -40,8 +40,8 @@ class ProductDetailViewModel(
     }
 
     private fun handleSuccess(response: MarketplaceProductDetailResponse) {
-        savedStateHandle[KEY_STATE] = response.body
-        _productDetailState.postValue(StateProductDetail.Success(response.body))
+        savedStateHandle[KEY_STATE] = response
+        _productDetailState.postValue(StateProductDetail.Success(response))
     }
 
     private fun handleFailure(failure: Failure) {

@@ -2,7 +2,7 @@ package com.evernext10.marketplace.product.list.data.repository
 
 import android.util.Log
 import androidx.test.platform.app.InstrumentationRegistry
-import com.evernext10.core.domain.model.product.response.MarketplaceProductListResponse
+import com.evernext10.core.domain.model.pokemon.response.MarketplacePokemonListResponse
 import com.evernext10.core.domain.network.Either
 import com.evernext10.core.domain.network.request
 import com.evernext10.marketplace.product.list.data.remote.network.ProductListService
@@ -20,7 +20,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class MarketplaceProductListRepositoryImplTest {
+class MarketplacePokemonListRepositoryImplTest {
 
     private lateinit var repository: MarketplaceProductListRepositoryImpl
     private lateinit var mockWebServer: MockWebServer
@@ -65,7 +65,7 @@ class MarketplaceProductListRepositoryImplTest {
         val result = request(
             api.getProductsBySearch("TXL", 1),
             { it },
-            MarketplaceProductListResponse()
+            MarketplacePokemonListResponse()
         )
         Log.i("Result", result.toString())
         Truth.assertThat(result is Either.Left).isTrue()
@@ -82,7 +82,7 @@ class MarketplaceProductListRepositoryImplTest {
         val result = request(
             api.getProductsBySearch("TXL", 1),
             { it },
-            MarketplaceProductListResponse()
+            MarketplacePokemonListResponse()
         )
         Log.i("Result", result.toString())
         Truth.assertThat(result is Either.Left).isTrue()

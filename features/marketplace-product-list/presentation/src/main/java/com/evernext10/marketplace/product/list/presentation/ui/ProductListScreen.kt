@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.evernext10.core.domain.model.product.Product
-import com.evernext10.core.domain.model.product.state.StateProductList
+import androidx.recyclerview.widget.GridLayoutManager
+import com.evernext10.core.domain.model.pokemon.Pokemon
+import com.evernext10.core.domain.model.pokemon.state.StatePokemonList
 import com.evernext10.core.ext.launchAndRepeatWithViewLifecycle
 import com.evernext10.core.ext.onQueryTextChanged
 import com.evernext10.core.ext.showAlertDialogErrorApi
@@ -34,9 +34,9 @@ class ProductListScreen : Fragment() {
         })
     }
 
-    private fun navigateToDetail(product: Product) {
+    private fun navigateToDetail(product: Pokemon) {
         navigateToDestination(
-            Destination.ProductDetail(product.id!!)
+            Destination.PockemonDetail(product)
         )
     }
 
@@ -68,7 +68,7 @@ class ProductListScreen : Fragment() {
     private fun initViews() = with(binding) {
         recyclerViewProducts.apply {
             adapter = adapterProductList
-            layoutManager = LinearLayoutManager(requireContext())
+            layoutManager = GridLayoutManager(requireContext(), 2)
         }
 
         searchProduct.apply {
@@ -87,30 +87,23 @@ class ProductListScreen : Fragment() {
     private fun observerState() = with(binding) {
         launchAndRepeatWithViewLifecycle {
             productListViewModel.queryWord.observe(viewLifecycleOwner) {
-                if (it.isEmpty()) {
-                    textViewNoData.visible(true)
-                    textViewNoData.text = getString(R.string.set_word_in_search)
-                } else {
-                    textViewNoData.visible(false)
-                    textViewNoData.text = getString(R.string.error_no_available_data)
-                }
-                productListViewModel.getMarketplaceProductList(it)
+                // productListViewModel.getMarketplaceProductList(it)
             }
             productListViewModel.productListState.observe(viewLifecycleOwner) {
                 Log.i("ResponseStatus", it.toString())
                 when (it) {
-                    is StateProductList.Loading -> {
-                        binding.progressBottom.visible(true)
+                    is StatePokemonList.Loading -> {
+                        progressBottom.visible(true)
                     }
-                    is StateProductList.Success -> {
-                        binding.progressBottom.visible(false)
-                        adapterProductList.submitList(it.products)
+                    is StatePokemonList.Success -> {
+                        progressBottom.visible(false)
+                        adapterProductList.submitList(it.pokemon)
                     }
-                    is StateProductList.Unauthorized -> {
-                        binding.progressBottom.visible(false)
+                    is StatePokemonList.Unauthorized -> {
+                        progressBottom.visible(false)
                         Log.i("Response", "Unauthorized")
                     }
-                    is StateProductList.Error -> {
+                    is StatePokemonList.Error -> {
                         showAlertDialogErrorApi()
                     }
                     else -> {

@@ -1,14 +1,13 @@
 package com.evernext10.marketplace.product.list.domain.model
 
-import com.evernext10.core.domain.model.product.Picture
-import com.evernext10.core.domain.model.product.Product
-import com.evernext10.core.domain.model.product.response.MarketplaceProductListResponse
+import com.evernext10.core.domain.model.pokemon.Pokemon
+import com.evernext10.core.domain.model.pokemon.response.MarketplacePokemonListResponse
 
-fun productListResponse() = MarketplaceProductListResponse(
+fun productListResponse() = MarketplacePokemonListResponse(
     site_id = "",
     query = "",
     results = listOf(
-        Product(
+        Pokemon(
             id = "ASDASD",
             title = "TX",
             price = 1626565,

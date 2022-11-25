@@ -51,7 +51,7 @@ val coreModule = module {
     fun provideRetrofit(httpClient: OkHttpClient, moshi: Moshi): Retrofit {
         return Retrofit.Builder()
             .client(httpClient)
-            .baseUrl("https://api.mercadolibre.com/sites/")
+            .baseUrl("https://pokeapi.co/api/v2/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
