@@ -22,6 +22,6 @@ class ApiServiceModule(retrofit: Retrofit) : ProductDetailService {
     private val api by lazy { retrofit.create(ProductDetailService::class.java) }
 
     override fun getProductById(
-        id: String?
-    ): Call<List<MarketplaceProductDetailResponse>> = api.getProductById(id)
+        id: Int?
+    ): Call<MarketplaceProductDetailResponse> = api.getProductById(id)
 }

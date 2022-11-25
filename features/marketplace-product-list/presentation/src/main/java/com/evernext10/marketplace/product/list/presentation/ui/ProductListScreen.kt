@@ -93,14 +93,14 @@ class ProductListScreen : Fragment() {
                 Log.i("ResponseStatus", it.toString())
                 when (it) {
                     is StatePokemonList.Loading -> {
-                        binding.progressBottom.visible(true)
+                        progressBottom.visible(true)
                     }
                     is StatePokemonList.Success -> {
-                        binding.progressBottom.visible(false)
+                        progressBottom.visible(false)
                         adapterProductList.submitList(it.pokemon)
                     }
                     is StatePokemonList.Unauthorized -> {
-                        binding.progressBottom.visible(false)
+                        progressBottom.visible(false)
                         Log.i("Response", "Unauthorized")
                     }
                     is StatePokemonList.Error -> {

@@ -13,5 +13,5 @@ class GetDetailProductByIdUseCase constructor(
         return mercadoLibreRepository.productDetail(params.id)
     }
 
-    data class Params(val id: String?)
+    data class Params(val id: Int?)
 }

@@ -15,14 +15,14 @@ class MarketplaceProductDetailRepositoryImpl(
 ) : MarketplaceProductDetailRepository {
 
     override suspend fun productDetail(
-        id: String?
+        id: Int?
     ): Either<Failure, MarketplaceProductDetailResponse> {
         return when (context.isNetworkAvailable()) {
             true -> {
                 request(
                     api.getProductById(id),
-                    { it[0] },
-                    emptyList()
+                    { it },
+                    MarketplaceProductDetailResponse()
                 )
             }
             false -> Either.Left(Failure.NetworkConnection)

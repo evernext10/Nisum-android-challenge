@@ -3,11 +3,11 @@ package com.evernext10.marketplace.product.detail.data.remote.network
 import com.evernext10.core.domain.model.pokemon.response.MarketplaceProductDetailResponse
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.Path
 
 interface ProductDetailService {
-    @GET("/items?")
+    @GET("/api/v2/pokemon/{id}")
     fun getProductById(
-        @Query("ids") ids: String?
-    ): Call<List<MarketplaceProductDetailResponse>>
+        @Path("id") id: Int?
+    ): Call<MarketplaceProductDetailResponse>
 }

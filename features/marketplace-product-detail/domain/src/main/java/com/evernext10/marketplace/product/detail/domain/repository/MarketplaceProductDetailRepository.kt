@@ -6,6 +6,6 @@ import com.evernext10.core.domain.network.Failure
 
 interface MarketplaceProductDetailRepository {
     suspend fun productDetail(
-        id: String?
+        id: Int?
     ): Either<Failure, MarketplaceProductDetailResponse>
 }

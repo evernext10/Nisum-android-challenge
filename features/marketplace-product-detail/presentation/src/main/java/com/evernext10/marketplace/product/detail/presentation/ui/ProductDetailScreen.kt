@@ -39,7 +39,7 @@ class ProductDetailScreen : Fragment() {
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
         Log.i("STATE_INSTANCE", "Restored")
-        detailProductDetailViewModel.getDataFromStateHandled(requireArguments()["productId"] as String)
+        detailProductDetailViewModel.getDataFromStateHandled(requireArguments()["pockemonId"] as Int)
         observerState()
     }
 
@@ -57,7 +57,7 @@ class ProductDetailScreen : Fragment() {
                     }
                     is StateProductDetail.Success -> {
                         binding.progress.visible(false)
-                        initViews(it.product)
+                        //initViews(it.response)
                     }
                     is StateProductDetail.Unauthorized -> {
                         binding.progress.visible(true)

@@ -9,7 +9,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Pokemon(
     @Json(name = "id")
-    val id: String? = null,
+    var id: Int? = null,
     @Json(name = "name")
     val name: String? = null,
     @Json(name = "url")

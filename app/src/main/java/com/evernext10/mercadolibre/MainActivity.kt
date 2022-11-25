@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.action_to_productList)
                 }
                 is Destination.ProductDetail -> {
-                    navController.navigate(R.id.action_to_productDetail, bundleOf("productId" to destination.productId))
+                    navController.navigate(R.id.action_to_productDetail, bundleOf("pockemonId" to destination.pockemonId))
                 }
                 else -> {
                     navController.navigate(R.id.action_to_productList)

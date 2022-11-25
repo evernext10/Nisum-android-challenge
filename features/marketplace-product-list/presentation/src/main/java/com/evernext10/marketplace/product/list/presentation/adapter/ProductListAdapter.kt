@@ -7,10 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.evernext10.core.R
 import com.evernext10.core.domain.model.pokemon.Pokemon
-import com.evernext10.core.ext.bindImageUrl
-import com.evernext10.core.ext.pokemonImageUrl
-import com.evernext10.core.ext.toCreditQuotes
-import com.evernext10.core.ext.toFormattedNumber
+import com.evernext10.core.ext.*
 import com.evernext10.marketplace.product.list.presentation.databinding.ItemProductBinding
 
 class ProductListAdapter(
@@ -56,6 +53,7 @@ class ProductListAdapter(
                         errorPlaceholder = R.drawable.ic_baseline_error_24
                     )
                     this.root.setOnClickListener { view ->
+                        it.id = it.url?.getPokemonId()?.takeLast(3)?.toInt()
                         onClick(it)
                     }
                 }

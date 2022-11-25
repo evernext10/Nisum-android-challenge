@@ -11,7 +11,7 @@ sealed class Destination() : Parcelable {
     object ProductList : Destination()
 
     @Parcelize
-    class ProductDetail(val productId: String) : Destination()
+    class ProductDetail(val pockemonId: Int) : Destination()
 
     /**
      * Extends this when origin screen must be known.

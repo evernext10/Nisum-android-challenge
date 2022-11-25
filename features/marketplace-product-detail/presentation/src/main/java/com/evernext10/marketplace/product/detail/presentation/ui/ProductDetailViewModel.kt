@@ -19,17 +19,17 @@ class ProductDetailViewModel(
     private val _productDetailState: MutableLiveData<StateProductDetail> = MutableLiveData()
     val productDetailState: LiveData<StateProductDetail> = _productDetailState
 
-    fun getDataFromStateHandled(productId: String) {
+    fun getDataFromStateHandled(pockemonId: Int) {
         if (savedStateHandle.contains(KEY_STATE)) {
             _productDetailState.postValue(StateProductDetail.Success(savedStateHandle[KEY_STATE]!!))
         } else {
-            getMarketplaceProductDetail(productId)
+            getMarketplaceProductDetail(pockemonId)
         }
     }
 
-    private fun getMarketplaceProductDetail(productId: String) {
+    private fun getMarketplaceProductDetail(pockemonId: Int) {
         useCase(
-            GetDetailProductByIdUseCase.Params(productId),
+            GetDetailProductByIdUseCase.Params(pockemonId),
             viewModelScope
         ) {
             it.fold(
@@ -40,8 +40,8 @@ class ProductDetailViewModel(
     }
 
     private fun handleSuccess(response: MarketplaceProductDetailResponse) {
-        savedStateHandle[KEY_STATE] = response.body
-        _productDetailState.postValue(StateProductDetail.Success(response.body))
+        savedStateHandle[KEY_STATE] = response
+        _productDetailState.postValue(StateProductDetail.Success(response))
     }
 
     private fun handleFailure(failure: Failure) {
