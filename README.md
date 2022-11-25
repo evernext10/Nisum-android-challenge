@@ -1,4 +1,4 @@
-# MELI Challenge - Android Clean Architecture with MVVM using Jetpack component
+# Nisum Challenge - Android Clean Architecture with MVVM using Jetpack component
 
 
 ## 💡 What is Clean Architecture?
@@ -53,7 +53,7 @@ Easily Testable
 - [CI/CD - GitActions](https://proandroiddev.com/android-ci-cd-pipeline-with-github-actions-demystifying-github-actions-83258e76a18f)
 
 
-## 💡 Project: MELI Challenge
+## 💡 Project: Nisum Challenge
 
 This is a test presentation of Clean Architecture with MVVM in Android to show products from Mercado Libre API.
 
@@ -64,11 +64,11 @@ This is a test presentation of Clean Architecture with MVVM in Android to show p
 
 - core
 - features
-  - marketplace-product-list
+  - marketplace-pockemon-list
     - data
     - domain
     - presentation
-  - marketplace-product-detail
+  - marketplace-pockemon-detail
     - data
     - domain
     - presentation
