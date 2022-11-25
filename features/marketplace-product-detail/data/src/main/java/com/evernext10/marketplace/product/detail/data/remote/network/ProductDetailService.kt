@@ -1,6 +1,6 @@
 package com.evernext10.marketplace.product.detail.data.remote.network
 
-import com.evernext10.core.domain.model.product.response.MarketplaceProductDetailResponse
+import com.evernext10.core.domain.model.pokemon.response.MarketplaceProductDetailResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -75,3 +75,7 @@ fun Long.toFormattedNumber() = "$ ${String.format("%,d", this)}"
 fun Long.toCreditQuotes() = "en 36x $ ${String.format("%,d", this/36)}"
 
 fun Double.toFormattedNumber() = "$ ${String.format("%,d", this.toLong())}"
+
+fun String.getPokemonId() = this.filter { it.isDigit() }
+
+fun String.pokemonImageUrl() = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getPokemonId().takeLast(3)}.png"

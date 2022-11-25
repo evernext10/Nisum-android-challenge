@@ -1,6 +1,6 @@
 package com.evernext10.marketplace.product.detail.data.di
 
-import com.evernext10.core.domain.model.product.response.MarketplaceProductDetailResponse
+import com.evernext10.core.domain.model.pokemon.response.MarketplaceProductDetailResponse
 import com.evernext10.marketplace.product.detail.data.remote.network.ProductDetailService
 import com.evernext10.marketplace.product.detail.data.repository.MarketplaceProductDetailRepositoryImpl
 import com.evernext10.marketplace.product.detail.domain.repository.MarketplaceProductDetailRepository

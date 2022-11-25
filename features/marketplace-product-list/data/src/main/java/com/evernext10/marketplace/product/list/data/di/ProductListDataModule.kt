@@ -1,6 +1,6 @@
 package com.evernext10.marketplace.product.list.data.di
 
-import com.evernext10.core.domain.model.product.response.MarketplaceProductListResponse
+import com.evernext10.core.domain.model.pokemon.response.MarketplacePokemonListResponse
 import com.evernext10.marketplace.product.list.data.remote.network.ProductListService
 import com.evernext10.marketplace.product.list.data.repository.MarketplaceProductListRepositoryImpl
 import com.evernext10.marketplace.product.list.domain.repository.MarketplaceProductListRepository
@@ -22,7 +22,7 @@ class ApiServiceModule(retrofit: Retrofit) : ProductListService {
     private val api by lazy { retrofit.create(ProductListService::class.java) }
 
     override fun getProductsBySearch(
-        query: String?,
+        offset: Int?,
         limit: Int?
-    ): Call<MarketplaceProductListResponse> = api.getProductsBySearch(query, limit)
+    ): Call<MarketplacePokemonListResponse> = api.getProductsBySearch(offset, limit)
 }

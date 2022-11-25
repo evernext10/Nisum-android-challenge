@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.evernext10.core.domain.model.product.response.MarketplaceProductListResponse
-import com.evernext10.core.domain.model.product.state.StateProductList
+import com.evernext10.core.domain.model.pokemon.response.MarketplacePokemonListResponse
+import com.evernext10.core.domain.model.pokemon.state.StatePokemonList
 import com.evernext10.core.domain.network.Failure
 import com.evernext10.marketplace.product.list.domain.usecase.GetListProductsBySearchUseCase
 
@@ -15,8 +15,8 @@ class ProductListScreenViewModel constructor(
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val _productListState: MutableLiveData<StateProductList> = MutableLiveData()
-    val productListState: LiveData<StateProductList> = _productListState
+    private val _productListState: MutableLiveData<StatePokemonList> = MutableLiveData()
+    val productListState: LiveData<StatePokemonList> = _productListState
 
     private val _randomWord: MutableLiveData<String> = MutableLiveData()
     val randomWord: LiveData<String> = _randomWord
@@ -26,7 +26,7 @@ class ProductListScreenViewModel constructor(
 
     fun getDataFromStateHandled() {
         if (savedStateHandle.contains(KEY_STATE)) {
-            _productListState.postValue(StateProductList.Success(savedStateHandle[KEY_STATE]!!))
+            _productListState.postValue(StatePokemonList.Success(savedStateHandle[KEY_STATE]!!))
         }
     }
 
@@ -34,9 +34,13 @@ class ProductListScreenViewModel constructor(
         _randomWord.postValue(RANDOM_LIST_ITEMS.random())
     }
 
-    fun getMarketplaceProductList(search: String, limit: Int = 30) {
+    init {
+        getMarketplacePockemonList(150, 150)
+    }
+
+    fun getMarketplacePockemonList(offset: Int = 150, limit: Int = 150) {
         useCase(
-            GetListProductsBySearchUseCase.Params(search, limit),
+            GetListProductsBySearchUseCase.Params(offset, limit),
             viewModelScope
         ) {
             it.fold(
@@ -48,13 +52,13 @@ class ProductListScreenViewModel constructor(
 
     fun postQueryWord(query: String) = _queryWord.postValue(query)
 
-    private fun handleSuccess(response: MarketplaceProductListResponse) {
+    private fun handleSuccess(response: MarketplacePokemonListResponse) {
         savedStateHandle[KEY_STATE] = response.results
-        _productListState.postValue(StateProductList.Success(response.results))
+        _productListState.postValue(StatePokemonList.Success(response.results))
     }
 
     private fun handleFailure(failure: Failure) {
-        _productListState.postValue(StateProductList.Error)
+        _productListState.postValue(StatePokemonList.Error)
     }
 
     companion object {

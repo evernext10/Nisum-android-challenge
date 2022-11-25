@@ -6,14 +6,13 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
-import com.evernext10.core.domain.model.product.Product
-import com.evernext10.core.domain.model.product.state.StateProductDetail
+import com.evernext10.core.domain.model.pokemon.Pokemon
+import com.evernext10.core.domain.model.pokemon.state.StateProductDetail
 import com.evernext10.core.ext.launchAndRepeatWithViewLifecycle
 import com.evernext10.core.ext.showAlertDialogErrorApi
 import com.evernext10.core.ext.toFormattedNumber
 import com.evernext10.core.ext.visible
 import com.evernext10.marketplace.product.detail.presentation.R
-import com.evernext10.marketplace.product.detail.presentation.adapter.PhotosProductAdapter
 import com.evernext10.marketplace.product.detail.presentation.databinding.FragmentProductDetailScreenBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -23,10 +22,6 @@ class ProductDetailScreen : Fragment() {
     private val binding get() = _binding!!
 
     private val detailProductDetailViewModel by viewModel<ProductDetailViewModel>()
-
-    private val photosViewPager: PhotosProductAdapter by lazy {
-        PhotosProductAdapter()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -81,12 +76,8 @@ class ProductDetailScreen : Fragment() {
         }
     }
 
-    private fun initViews(product: Product) = with(binding) {
-        photosViewPager.submitList(product.pictures)
-        productSold.text = "${product.condition} | ${product.soldQuantity} vendidos"
-        productTitle.text = product.title
-        productPrice.text = product.price?.toFormattedNumber()
-        viewPager2.adapter = photosViewPager
+    private fun initViews(product: Pokemon) = with(binding) {
+        productTitle.text = product.name
 
         toolbar.apply {
             inflateMenu(R.menu.product_item_menu)
@@ -94,17 +85,6 @@ class ProductDetailScreen : Fragment() {
                 findNavController().popBackStack()
             }
         }
-
-        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-                tvImagesCount.text = "${position.plus(1)}/${photosViewPager.itemCount}"
-            }
-        })
     }
 
     override fun onDestroyView() {

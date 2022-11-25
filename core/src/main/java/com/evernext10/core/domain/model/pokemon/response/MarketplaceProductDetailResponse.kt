@@ -1,6 +1,6 @@
-package com.evernext10.core.domain.model.product.response
+package com.evernext10.core.domain.model.pokemon.response
 
-import com.evernext10.core.domain.model.product.Product
+import com.evernext10.core.domain.model.pokemon.Pokemon
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -9,5 +9,5 @@ data class MarketplaceProductDetailResponse(
     @Json(name = "code")
     val code: Int = 0,
     @Json(name = "body")
-    val body: Product = Product()
+    val body: Pokemon = Pokemon()
 )

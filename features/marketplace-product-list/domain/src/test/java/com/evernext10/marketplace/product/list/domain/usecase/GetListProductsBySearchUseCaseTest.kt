@@ -1,6 +1,6 @@
 package com.evernext10.marketplace.product.list.domain.usecase
 
-import com.evernext10.core.domain.model.product.response.MarketplaceProductListResponse
+import com.evernext10.core.domain.model.pokemon.response.MarketplacePokemonListResponse
 import com.evernext10.core.domain.network.Either
 import com.evernext10.core.domain.network.Failure
 import com.evernext10.marketplace.product.list.domain.model.productListResponse
@@ -48,8 +48,8 @@ class GetListProductsBySearchUseCaseTest {
 
     private fun handleFailure(failure: Failure) {}
 
-    private fun handleSuccess(marketplaceProductListResponse: MarketplaceProductListResponse) {
-        Truth.assertThat(marketplaceProductListResponse.results).isNotEmpty()
+    private fun handleSuccess(marketplacePokemonListResponse: MarketplacePokemonListResponse) {
+        Truth.assertThat(marketplacePokemonListResponse.results).isNotEmpty()
     }
 
     @After
