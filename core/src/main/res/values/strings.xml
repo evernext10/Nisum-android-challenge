@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">core</string>
+
+    <string name="product_detail_option_favorite">Favorito</string>
+    <string name="product_detail_option_search">Buscar</string>
+    <string name="product_detail_option_shop">Shipping</string>
+    <string name="product_detail_mock_address">Enviar a Evert Moreno - Tv 53a #65-70</string>
+    <string name="product_detail_item_offer">OFERTA DEL DIA</string>
+
+    <string name="error_api_generic_title">Lo sentimos</string>
+    <string name="error_api_generic_message">La API de The Movie DB esta presentando fallas. Intenta nuevamente en un rato.</string>
+</resources>
