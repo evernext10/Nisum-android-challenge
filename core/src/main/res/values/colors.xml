@@ -13,4 +13,6 @@
     <color name="color_green_background">#DFF8ED</color>
     <color name="color_blue_background">#2196F3</color>
     <color name="color_green_text">#199C5F</color>
+    <color name="green">#49bb79</color>
+    <color name="yellow">#ffcba4</color>
 </resources>

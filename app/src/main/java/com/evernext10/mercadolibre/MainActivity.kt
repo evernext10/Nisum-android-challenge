@@ -30,11 +30,11 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.setFragmentNavigationListener(this) { destination ->
             val navController = findNavController(R.id.nav_host_fragment_content_main)
             when (destination) {
-                is Destination.ProductList -> {
+                is Destination.PockemonList -> {
                     navController.navigate(R.id.action_to_productList)
                 }
-                is Destination.ProductDetail -> {
-                    navController.navigate(R.id.action_to_productDetail, bundleOf("pockemonId" to destination.pockemonId))
+                is Destination.PockemonDetail -> {
+                    navController.navigate(R.id.action_to_productDetail, bundleOf("pockemon" to destination.pockemon))
                 }
                 else -> {
                     navController.navigate(R.id.action_to_productList)

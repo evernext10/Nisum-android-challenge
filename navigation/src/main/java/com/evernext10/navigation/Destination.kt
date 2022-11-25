@@ -1,6 +1,7 @@
 package com.evernext10.navigation
 
 import android.os.Parcelable
+import com.evernext10.core.domain.model.pokemon.Pokemon
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -8,16 +9,9 @@ import kotlinx.android.parcel.Parcelize
  */
 sealed class Destination() : Parcelable {
     @Parcelize
-    object ProductList : Destination()
+    object PockemonList : Destination()
 
     @Parcelize
-    class ProductDetail(val pockemonId: Int) : Destination()
+    class PockemonDetail(val pockemon: Pokemon) : Destination()
 
-    /**
-     * Extends this when origin screen must be known.
-     */
-    abstract class DestinationWithOrigin(val origin: String) : Destination()
-
-    @Parcelize
-    object NotificationSecondLevel : DestinationWithOrigin("notifs")
 }

@@ -36,7 +36,7 @@ class ProductListScreen : Fragment() {
 
     private fun navigateToDetail(product: Pokemon) {
         navigateToDestination(
-            Destination.ProductDetail(product.id!!)
+            Destination.PockemonDetail(product)
         )
     }
 
