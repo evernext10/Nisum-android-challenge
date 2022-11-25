@@ -27,10 +27,57 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/primary"
-                app:title="Pokemones"
                 app:popupTheme="@style/Theme.MercadoLibre.PopupOverlay">
 
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/mcv_search_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/margin_normal"
+                        android:layout_marginVertical="@dimen/margin_small"
+                        android:layout_weight="0.8"
+                        app:cardCornerRadius="@dimen/search_view_radius"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <SearchView
+                            android:id="@+id/searchProduct"
+                            android:theme="@style/ThemeOverlay.SearchView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:closeIcon="@drawable/ic_baseline_close_24"
+                            android:iconifiedByDefault="false"
+                            android:imeOptions="actionDone|flagNoExtractUi"
+                            android:queryBackground="@android:color/transparent"
+                            android:queryHint="@string/search_bar_title"
+                            android:searchIcon="@drawable/ic_baseline_search_24"
+                            />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_height="24dp"
+                        android:layout_weight="0.1"
+                        android:visibility="gone"
+                        android:src="@drawable/ic_baseline_shopping_cart_24" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
             </com.google.android.material.appbar.MaterialToolbar>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:text="@string/product_detail_mock_address"
+                android:textColor="@color/black"
+                android:paddingStart="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_normal"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
