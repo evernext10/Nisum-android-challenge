@@ -13,7 +13,8 @@ val productDetailDataModule = module {
     single<MarketplaceProductDetailRepository> {
         MarketplaceProductDetailRepositoryImpl(
             ApiServiceModule(get()),
-            androidContext()
+            androidContext(),
+            get()
         )
     }
 }

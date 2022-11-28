@@ -63,6 +63,9 @@ dependencies {
     implementation(Koin.koinCore)
     implementation(Koin.koinAndroid)
 
+    implementation(Room.roomRuntime)
+    kapt(Room.roomCompiler)
+
     testImplementation(Testing.junit4)
     testImplementation(Testing.junitAndroidExt)
     testImplementation(Testing.truth)
